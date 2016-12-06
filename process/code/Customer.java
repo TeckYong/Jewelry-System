@@ -10,6 +10,7 @@ public class Customer {
     private String custIC;
     private String custPhoneNo;
     private String custAddress;
+    public ArrayList<Product> products = new ArrayList<>();
 
     public Customer() {
     }
@@ -78,11 +79,34 @@ public class Customer {
                 + "Customer Address: " + custAddress + "\n";
     }
 
+    public ArrayList<Product> showAllProducts() {
+        return this.products;
+    }
+
+    public void buyProduct(Product p) {
+        this.products.add(p);
+    }
+
+    public void sellProduct(Product p) {
+        this.products.remove(p);
+    }
+
     public static Customer findCustomer(int id) {
         Customer found = new Customer();
         for (int j = UJS.customers.size() - 1; j >= 0; j--) {
             if (UJS.customers.get(j).getCustomerID() == id) {
                 found = UJS.customers.get(j);
+                break;
+            }
+        }
+        return found;
+    }
+
+    public Product findProduct(int id) {
+        Product found = null;
+        for (int j = products.size() - 1; j >= 0; j--) {
+            if (products.get(j).getProductID() == id) {
+                found = products.get(j);
                 break;
             }
         }
