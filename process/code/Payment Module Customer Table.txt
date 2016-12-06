@@ -1,0 +1,88 @@
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+public class Sales extends javax.swing.JDialog {
+
+    public static int custID;
+
+    public Sales() {
+        initComponents();
+        setLocationRelativeTo(this);
+    }
+
+    private DefaultTableModel FillStoreTable() {
+        String[] columnNames = {"ID", "Product Name", "Weight(g)", "Price"};
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public Class getColumnClass(int column) {
+                switch (column) {
+                    case 0:
+                        return Integer.class;
+                    case 2:
+                        return Double.class;
+                    default:
+                        return String.class;
+                }
+            }
+
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                switch (col) {
+                    default:
+                        return false;
+                }
+            }
+        };
+        tblStore.setModel(tableModel);
+        Object rowData[] = new Object[4];
+
+        for (int i = 0; i < Store.products.size(); i++) {
+            rowData[0] = Store.products.get(i).getProductID();
+            rowData[1] = Store.products.get(i).getProductName();
+            rowData[2] = Store.products.get(i).getWeight();
+            rowData[3] = Product.convertTwoDecimalPoint(Store.products.get(i).calculateSellPrice());
+            tableModel.addRow(rowData);
+        }
+        return tableModel;
+    }
+
+    private DefaultTableModel FillCustomerTable() {
+        String[] columnNames = {"ID", "Product Name", "Weight(g)", "Price"};
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public Class getColumnClass(int column) {
+                switch (column) {
+                    case 0:
+                        return Integer.class;
+                    case 2:
+                        return Double.class;
+                    default:
+                        return String.class;
+                }
+            }
+
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                switch (col) {
+                    default:
+                        return false;
+                }
+            }
+        };
+        tblCustomer.setModel(tableModel);
+        Object rowData[] = new Object[4];
+        Customer c = Customer.findCustomer(custID);
+        if (c.showAllProducts() != null) {
+            for (int i = 0; i < c.showAllProducts().size(); i++) {
+                rowData[0] = c.showAllProducts().get(i).getProductID();
+                rowData[1] = c.showAllProducts().get(i).getProductName();
+                rowData[2] = c.showAllProducts().get(i).getWeight();
+                rowData[3] = Product.convertTwoDecimalPoint(c.showAllProducts().get(i).calculateSellPrice());
+                tableModel.addRow(rowData);
+            }
+        }
+        return tableModel;
+    }
+
+    @SuppressWarnings("unchecked")
