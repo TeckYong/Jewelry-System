@@ -13,11 +13,11 @@ public class AddCustomer extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtCustName = new javax.JTextField();
-        txtCustPhoneNo = new javax.JTextField();
-        txtCustAddress = new javax.JTextField();
-        txtCustIC = new javax.JFormattedTextField();
-        btnAdd = new javax.JButton();
+        txtCustName = new javax.swing.JTextField();
+        txtCustPhoneNo = new javax.swing.JTextField();
+        txtCustAddress = new javax.swing.JTextField();
+        txtCustIC = new javax.swing.JFormattedTextField();
+        btnAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Customer");
