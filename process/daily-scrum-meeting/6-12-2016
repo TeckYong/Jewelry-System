@@ -1,0 +1,18 @@
+Chan Chun Weng - Yesterday he created the main UI base using CardLayout which allow customerCard and productCard to change accordingly.
+                 Today he will create a customer object and sample customer data for testing purposes. He didn't meet any problem yet.
+
+
+
+
+
+Yashua Daniel - Yesterday he ran a few unit tests on the currently made features for the payment calculations sub system. Today he going
+                continue coding other sub-systems for the payment module. He didn't meet any problem yet.
+
+
+
+
+
+Tan Jun Lem  - Yesterday he designed a form that is allowed a staff to add a new customer in system so that theri details reusable for
+               their next purchases. Today he will going to check the coding error and fix the problem that cause the system error which
+               can not perform the add new customer function. The problem he faced is some coding errors are occured make the form could
+               not add testable data into system. I suggest him to commit his code into github and let others developer review and comment.

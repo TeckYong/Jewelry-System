@@ -82,9 +82,11 @@ public class CustomerCard extends javax.swing.JPanel {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (tblCustomer.getSelectedRowCount() == 1) {
+                    btnSales.setEnabled(true);
                     btnUpdate.setEnabled(true);
                     btnDelete.setEnabled(true);
                 } else {
+                    btnSales.setEnabled(false);
                     btnUpdate.setEnabled(false);
                     btnDelete.setEnabled(false);
                 }
@@ -104,7 +106,8 @@ public class CustomerCard extends javax.swing.JPanel {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
-
+		btnSales = new javax.swing.JButton();
+		
         jLabel1.setText("Search:");
 
         tblCustomer.setAutoCreateRowSorter(true);
@@ -164,7 +167,15 @@ public class CustomerCard extends javax.swing.JPanel {
                 btnRefreshActionPerformed(evt);
             }
         });
-
+ 
+		btnSales.setText("Sales");
+        btnSales.setEnabled(false);
+        btnSales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalesActionPerformed(evt);
+            }
+        });
+		
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,6 +192,8 @@ public class CustomerCard extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnRefresh)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSales)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAdd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUpdate)
@@ -202,37 +215,67 @@ public class CustomerCard extends javax.swing.JPanel {
                     .addComponent(btnAdd)
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete)
-                    .addComponent(btnRefresh))
+                    .addComponent(btnRefresh)
+                    .addComponent(btnSales))
                 .addGap(9, 9, 9))
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        DefaultTableModel model = (DefaultTableModel) tblCustomer.getModel();
+        new AddCustomer().setVisible(true);
+        model.setRowCount(0);
+        FillTable();
+    }                                      
 
-    }//GEN-LAST:event_btnAddActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        int result = JOptionPane.showConfirmDialog(null, "Confirm delete?", "Deleting", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (result == JOptionPane.YES_OPTION) {
+            DefaultTableModel model = (DefaultTableModel) tblCustomer.getModel();
+            int custID = 0;
+            custID = (Integer) tblCustomer.getValueAt(tblCustomer.getSelectedRow(), 0);
+            UJS.deleteCustomer(custID);
+            model.removeRow(tblCustomer.getSelectedRow());
+        }
+    }                                         
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        
-    }//GEN-LAST:event_btnDeleteActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        DefaultTableModel model = (DefaultTableModel) tblCustomer.getModel();
+        UpdateCustomer u = new UpdateCustomer();
+        int selectedRow = tblCustomer.getSelectedRow();
+        int id = (int) model.getValueAt(selectedRow, 0);
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        
-    }//GEN-LAST:event_btnUpdateActionPerformed
+        u.lblCustID.setText("" + id);
+        u.txtCustName.setText(model.getValueAt(selectedRow, 1).toString());
+        u.txtCustIC.setText(model.getValueAt(selectedRow, 2).toString());
+        u.txtCustPhoneNo.setText(model.getValueAt(selectedRow, 3).toString());
+        u.txtCustAddress.setText(model.getValueAt(selectedRow, 4).toString());
+        u.setVisible(true);
+        model.setRowCount(0);
+        FillTable();
+    }                                         
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {                                           
         DefaultTableModel model = (DefaultTableModel) tblCustomer.getModel();
         model.setRowCount(0);
         FillTable();
-    }//GEN-LAST:event_btnRefreshActionPerformed
+    }                                          
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private void btnSalesActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        DefaultTableModel model = (DefaultTableModel) tblCustomer.getModel();
+        Sales.custID = (Integer) model.getValueAt(tblCustomer.getSelectedRow(), 0);
+        new Sales().setVisible(true);
+    }                                        
+
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnSales;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tblCustomer;
     private javax.swing.JTextField txtSearch;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
