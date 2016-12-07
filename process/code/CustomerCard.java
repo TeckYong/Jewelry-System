@@ -106,8 +106,8 @@ public class CustomerCard extends javax.swing.JPanel {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
-        btnSales = new javax.swing.JButton();
-
+	btnSales = new javax.swing.JButton();
+	    
         jLabel1.setText("Search:");
 
         tblCustomer.setAutoCreateRowSorter(true);
@@ -167,15 +167,15 @@ public class CustomerCard extends javax.swing.JPanel {
                 btnRefreshActionPerformed(evt);
             }
         });
-
-        btnSales.setText("Sales");
+ 
+	btnSales.setText("Sales");
         btnSales.setEnabled(false);
         btnSales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalesActionPerformed(evt);
             }
         });
-
+		
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -219,16 +219,16 @@ public class CustomerCard extends javax.swing.JPanel {
                     .addComponent(btnSales))
                 .addGap(9, 9, 9))
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {                                       
         DefaultTableModel model = (DefaultTableModel) tblCustomer.getModel();
         new AddCustomer().setVisible(true);
         model.setRowCount(0);
         FillTable();
-    }//GEN-LAST:event_btnAddActionPerformed
+    }                                      
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {                                          
         int result = JOptionPane.showConfirmDialog(null, "Confirm delete?", "Deleting", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (result == JOptionPane.YES_OPTION) {
             DefaultTableModel model = (DefaultTableModel) tblCustomer.getModel();
@@ -237,9 +237,9 @@ public class CustomerCard extends javax.swing.JPanel {
             UJS.deleteCustomer(custID);
             model.removeRow(tblCustomer.getSelectedRow());
         }
-    }//GEN-LAST:event_btnDeleteActionPerformed
+    }                                         
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {                                          
         DefaultTableModel model = (DefaultTableModel) tblCustomer.getModel();
         UpdateCustomer u = new UpdateCustomer();
         int selectedRow = tblCustomer.getSelectedRow();
@@ -253,21 +253,21 @@ public class CustomerCard extends javax.swing.JPanel {
         u.setVisible(true);
         model.setRowCount(0);
         FillTable();
-    }//GEN-LAST:event_btnUpdateActionPerformed
+    }                                         
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {                                           
         DefaultTableModel model = (DefaultTableModel) tblCustomer.getModel();
         model.setRowCount(0);
         FillTable();
-    }//GEN-LAST:event_btnRefreshActionPerformed
+    }                                          
 
-    private void btnSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalesActionPerformed
+    private void btnSalesActionPerformed(java.awt.event.ActionEvent evt) {                                         
         DefaultTableModel model = (DefaultTableModel) tblCustomer.getModel();
         Sales.custID = (Integer) model.getValueAt(tblCustomer.getSelectedRow(), 0);
         new Sales().setVisible(true);
-    }//GEN-LAST:event_btnSalesActionPerformed
+    }                                        
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRefresh;
@@ -277,5 +277,5 @@ public class CustomerCard extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tblCustomer;
     private javax.swing.JTextField txtSearch;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
