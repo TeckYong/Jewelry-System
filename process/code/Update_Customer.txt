@@ -1,0 +1,20 @@
+public UpdateCustomer() {
+        initComponents();
+        setLocationRelativeTo(this);
+    }
+
+    @SuppressWarnings(unchecked)
+     editor-fold defaultstate=collapsed desc=Generated Code                          
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtCustAddress = new javax.swing.JTextField();
+        txtCustPhoneNo = new javax.swing.JTextField();
+        txtCustIC = new javax.swing.JFormattedTextField();
+        txtCustName = new javax.swing.JTextField();
+        btnUpdate = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        lblCustID = new javax.swing.JLabel();
