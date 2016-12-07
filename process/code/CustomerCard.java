@@ -106,8 +106,8 @@ public class CustomerCard extends javax.swing.JPanel {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
-		btnSales = new javax.swing.JButton();
-		
+	btnSales = new javax.swing.JButton();
+	    
         jLabel1.setText("Search:");
 
         tblCustomer.setAutoCreateRowSorter(true);
@@ -168,7 +168,7 @@ public class CustomerCard extends javax.swing.JPanel {
             }
         });
  
-		btnSales.setText("Sales");
+	btnSales.setText("Sales");
         btnSales.setEnabled(false);
         btnSales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
