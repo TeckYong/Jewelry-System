@@ -14,6 +14,6 @@ private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {
 
             Store.addProduct(p);
             c.sellProduct(p);
-           
+            customerModel.removeRow(tblCustomer.getSelectedRow());
         }
     }                    
