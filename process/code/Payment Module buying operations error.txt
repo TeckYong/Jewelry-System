@@ -6,7 +6,7 @@ private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {
             int pID = (Integer) customerModel.getValueAt(tblCustomer.getSelectedRow(), 0);
             String pName = customerModel.getValueAt(tblCustomer.getSelectedRow(), 1).toString();
             double price = (Double) customerModel.getValueAt(tblCustomer.getSelectedRow(), 2);
-//        double sellPrice = Double.parseDouble(customerModel.getValueAt(tblCustomer.getSelectedRow(), 3).toString());
+            double sellPrice = Double.parseDouble(customerModel.getValueAt(tblCustomer.getSelectedRow(), 3).toString());
 
             Customer c = UJS.customers.get(custID);
             Product p = c.findProduct(pID);
