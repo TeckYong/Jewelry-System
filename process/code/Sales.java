@@ -86,7 +86,7 @@ public class Sales extends javax.swing.JDialog {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         grp1 = new javax.swing.ButtonGroup();
@@ -216,15 +216,31 @@ public class Sales extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void btnSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellActionPerformed
+    private void btnSellActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        if (tblStore.getSelectedRowCount() > 0) {
 
-    }//GEN-LAST:event_btnSellActionPerformed
+            DefaultTableModel storeModel = (DefaultTableModel) tblStore.getModel();
+            DefaultTableModel customerModel = (DefaultTableModel) tblCustomer.getModel();
 
-    private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
-        
-    }//GEN-LAST:event_btnPayActionPerformed
+            int pID = (Integer) storeModel.getValueAt(tblStore.getSelectedRow(), 0);
+            String pName = storeModel.getValueAt(tblStore.getSelectedRow(), 1).toString();
+            double price = (Double) storeModel.getValueAt(tblStore.getSelectedRow(), 2);
+//        double sellPrice = Double.parseDouble(storeModel.getValueAt(tblStore.getSelectedRow(), 3).toString());
+
+            Product p = Store.findProduct(pID);
+            customerModel.addRow(new Object[]{pID, pName, price, Product.convertTwoDecimalPoint(p.calculateSellPrice())});
+
+            UJS.customers.get(custID).buyProduct(Store.findProduct(pID));
+            Store.removeProduct(pID);
+            storeModel.removeRow(tblStore.getSelectedRow());
+        }
+    }                                       
+
+    private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {                                       
+
+    }                                      
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -258,7 +274,7 @@ public class Sales extends javax.swing.JDialog {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnPay;
     private javax.swing.JButton btnSell;
     private javax.swing.ButtonGroup grp1;
@@ -268,5 +284,5 @@ public class Sales extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblCustomer;
     private javax.swing.JTable tblStore;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
