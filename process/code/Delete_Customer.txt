@@ -1,0 +1,8 @@
+public static void deleteCustomer(int id) 
+    {
+        for (int j = customers.size() - 1; j >= 0; j--) {
+            
+                break;
+            }
+        }
+    }
