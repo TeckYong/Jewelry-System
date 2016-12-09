@@ -11,7 +11,7 @@
 
             customerModel.addRow(new Object[]{pID, pName, price, sellPrice});
    
-            int pID = (Integer) customerModel.getValueAt(tblCustomer.getSelectedRow(), 0);
+            int pID1 = (Integer) customerModel.getValueAt(tblCustomer.getSelectedRow(), 0);
             String pName1 = customerModel.getValueAt(tblCustomer.getSelectedRow(), 1).toString();
             double price1 = (Double) customerModel.getValueAt(tblCustomer.getSelectedRow(), 2);
             double sellPrice1 = Double.parseDouble(customerModel.getValueAt(tblCustomer.getSelectedRow(), 3).toString());
