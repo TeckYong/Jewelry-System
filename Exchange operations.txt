@@ -11,29 +11,24 @@
 
             customerModel.addRow(new Object[]{pID, pName, price, sellPrice});
    
-
-
-
             int pID = (Integer) customerModel.getValueAt(tblCustomer.getSelectedRow(), 0);
             String pName1 = customerModel.getValueAt(tblCustomer.getSelectedRow(), 1).toString();
             double price1 = (Double) customerModel.getValueAt(tblCustomer.getSelectedRow(), 2);
             double sellPrice1 = Double.parseDouble(customerModel.getValueAt(tblCustomer.getSelectedRow(), 3).toString());
-
             storeModel.addRow(new Object[]{pID1, pName1, price1, sellPrice1});
 
             //Exchange product
             Customer c = UJS.customers.get(custID);//Locate the index of the customer
-           	 Product oldProduct = c.findProduct(pID1);//find the old product from inside customer c
-
+           	Product oldProduct = c.findProduct(pID1);//find the old product from inside customer c
             Product newProduct = Store.findProduct(pID);//Find the new product from Store using product id
 
             int indexOfOldProduct = c.products.indexOf(oldProduct);//Find the index of the oldProduct from product list in customer c
-            	int indexOfNewProduct = Store.products.indexOf(newProduct);//Find the index of the newProduct from product list in Store
+            int indexOfNewProduct = Store.products.indexOf(newProduct);//Find the index of the newProduct from product list in Store
 
             c.products.set(indexOfOldProduct, newProduct);//Overwrite or set the newProduct to the customer c
-            	Store.products.set(indexOfNewProduct, oldProduct);//Overwrite or set the oldProduct to the Store
+            Store.products.set(indexOfNewProduct, oldProduct);//Overwrite or set the oldProduct to the Store
 
-            		storeModel.removeRow(tblStore.getSelectedRow());
+            storeModel.removeRow(tblStore.getSelectedRow());
             customerModel.removeRow(tblCustomer.getSelectedRow());
         }
     }          
