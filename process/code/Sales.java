@@ -93,7 +93,9 @@ public class Sales extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblStore = new javax.swing.JTable();
+        btnBuy = new javax.swing.JButton();
         btnSell = new javax.swing.JButton();
+        btnExchange = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCustomer = new javax.swing.JTable();
@@ -137,10 +139,24 @@ public class Sales extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        btnBuy.setText("Buy From");
+        btnBuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuyActionPerformed(evt);
+            }
+        });
+
         btnSell.setText("Sell To");
         btnSell.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSellActionPerformed(evt);
+            }
+        });
+
+        btnExchange.setText("Exchange");
+        btnExchange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExchangeActionPerformed(evt);
             }
         });
 
@@ -193,7 +209,9 @@ public class Sales extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSell, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                    .addComponent(btnExchange, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuy, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSell, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,6 +226,10 @@ public class Sales extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(156, 156, 156)
                         .addComponent(btnSell)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuy)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExchange)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnPay)
                         .addGap(16, 16, 16))
@@ -239,8 +261,86 @@ public class Sales extends javax.swing.JDialog {
     }                                       
 
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        StringBuilder sb = new StringBuilder();
 
+        double total = 0;
+        for (int i = 0; i < tblCustomer.getRowCount(); i++) {
+            double weight = Double.parseDouble(tblCustomer.getValueAt(i, 2).toString());
+            double price = Double.parseDouble(tblCustomer.getValueAt(i, 3).toString());
+            double t = weight * price;
+            sb.append(tblCustomer.getValueAt(i, 1));
+            sb.append(" | ");
+            sb.append(tblCustomer.getValueAt(i, 2));
+            sb.append(" * ");
+            sb.append(tblCustomer.getValueAt(i, 3));
+            sb.append(" = RM " + Product.convertTwoDecimalPoint(t));
+            sb.append("\n");
+            total += t;
+        }
+        sb.append("\n---------------------------");
+        sb.append("\n");
+        sb.append("Total Price: RM " + Product.convertTwoDecimalPoint(total));
+        double input = Double.parseDouble(JOptionPane.showInputDialog(null, "Receipt\n---------------------------\n" + sb, "Receipt", JOptionPane.INFORMATION_MESSAGE));
+        double balance = input - total;
+        JOptionPane.showMessageDialog(null, "Balance: RM " + Product.convertTwoDecimalPoint(balance));
     }                                      
+
+    private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        if (tblCustomer.getSelectedRowCount() > 0) {
+            DefaultTableModel customerModel = (DefaultTableModel) tblCustomer.getModel();
+            DefaultTableModel storeModel = (DefaultTableModel) tblStore.getModel();
+
+            int pID = (Integer) customerModel.getValueAt(tblCustomer.getSelectedRow(), 0);
+            String pName = customerModel.getValueAt(tblCustomer.getSelectedRow(), 1).toString();
+            double price = (Double) customerModel.getValueAt(tblCustomer.getSelectedRow(), 2);
+            //        double sellPrice = Double.parseDouble(customerModel.getValueAt(tblCustomer.getSelectedRow(), 3).toString());
+
+            Customer c = UJS.customers.get(custID);
+            Product p = c.findProduct(pID);
+            storeModel.addRow(new Object[]{pID, pName, price, Product.convertTwoDecimalPoint(p.calculatePurchasePrice())});
+
+            Store.addProduct(p);
+            c.sellProduct(p);
+            customerModel.removeRow(tblCustomer.getSelectedRow());
+        }
+    }                                      
+
+    private void btnExchangeActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        if (tblCustomer.getSelectedRowCount() > 0 && tblStore.getSelectedRowCount() > 0) {
+
+            DefaultTableModel storeModel = (DefaultTableModel) tblStore.getModel();
+            DefaultTableModel customerModel = (DefaultTableModel) tblCustomer.getModel();
+
+            int pID = (Integer) storeModel.getValueAt(tblStore.getSelectedRow(), 0);
+            String pName = storeModel.getValueAt(tblStore.getSelectedRow(), 1).toString();
+            double price = (Double) storeModel.getValueAt(tblStore.getSelectedRow(), 2);
+            double sellPrice = Double.parseDouble(storeModel.getValueAt(tblStore.getSelectedRow(), 3).toString());
+
+            customerModel.addRow(new Object[]{pID, pName, price, sellPrice});
+
+            int pID1 = (Integer) customerModel.getValueAt(tblCustomer.getSelectedRow(), 0);
+            String pName1 = customerModel.getValueAt(tblCustomer.getSelectedRow(), 1).toString();
+            double price1 = (Double) customerModel.getValueAt(tblCustomer.getSelectedRow(), 2);
+            double sellPrice1 = Double.parseDouble(customerModel.getValueAt(tblCustomer.getSelectedRow(), 3).toString());
+
+            storeModel.addRow(new Object[]{pID1, pName1, price1, sellPrice1});
+
+            //Exchange product
+            Customer c = UJS.customers.get(custID);//Locate the index of the customer
+            Product oldProduct = c.findProduct(pID1);//find the old product from inside customer c
+
+            Product newProduct = Store.findProduct(pID);//Find the new product from Store using product id
+
+            int indexOfOldProduct = c.products.indexOf(oldProduct);//Find the index of the oldProduct from product list in customer c
+            int indexOfNewProduct = Store.products.indexOf(newProduct);//Find the index of the newProduct from product list in Store
+
+            c.products.set(indexOfOldProduct, newProduct);//Overwrite or set the newProduct to the customer c
+            Store.products.set(indexOfNewProduct, oldProduct);//Overwrite or set the oldProduct to the Store
+
+            storeModel.removeRow(tblStore.getSelectedRow());
+            customerModel.removeRow(tblCustomer.getSelectedRow());
+        }
+    }                                           
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -275,6 +375,8 @@ public class Sales extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify                     
+    private javax.swing.JButton btnBuy;
+    private javax.swing.JButton btnExchange;
     private javax.swing.JButton btnPay;
     private javax.swing.JButton btnSell;
     private javax.swing.ButtonGroup grp1;
