@@ -1,0 +1,22 @@
+private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        if (tblCustomer.getSelectedRowCount() > 0) {
+            DefaultTableModel customerModel = (DefaultTableModel) tblCustomer.getModel();
+            DefaultTableModel storeModel = (DefaultTableModel) tblStore.getModel();
+
+
+            int pID = (Integer) customerModel.getValueAt(tblCustomer.getSelectedRow(), 0);
+            String pName = customerModel.getValueAt(tblCustomer.getSelectedRow(), 1).toString();
+            double price = (Double) customerModel.getValueAt(tblCustomer.getSelectedRow(), 2);
+            double sellPrice = Double.parseDouble(customerModel.getValueAt(tblCustomer.getSelectedRow(), 3).toString());
+
+
+            Customer c = UJS.customers.get(custID);
+            Product p = c.findProduct(pID);
+            storeModel.addRow(new Object[]{pID, pName, price, Product.convertTwoDecimalPoint(p.calculatePurchasePrice())});
+
+
+            Store.addProduct(p);
+            c.sellProduct(p);
+            customerModel.removeRow(tblCustomer.getSelectedRow());
+        }
+    }                    
