@@ -1,0 +1,22 @@
+	StringBuilder sb = new StringBuilder();
+
+        double total = 0;
+        for (int i = 0; i < tblCustomer.getRowCount(); i++) {
+            double weight = Double.parseDouble(tblCustomer.getValueAt(i, 2).toString());
+            double price = Double.parseDouble(tblCustomer.getValueAt(i, 3).toString());
+            double t = weight * price;
+            sb.append(tblCustomer.getValueAt(i, 1));
+            sb.append(" | ");
+            sb.append(tblCustomer.getValueAt(i, 2));
+            sb.append(" * ");
+            sb.append(tblCustomer.getValueAt(i, 3));
+            sb.append(" = RM " + Product.convertTwoDecimalPoint(t));
+            sb.append("\n");
+            total += t;
+        }
+        sb.append("\n---------------------------");
+        sb.append("\n");
+        sb.append("Total Price: RM " + Product.convertTwoDecimalPoint(total));
+        double input = Double.parseDouble(JOptionPane.showInputDialog(null, "Receipt\n---------------------------\n" + sb, "Receipt", JOptionPane.INFORMATION_MESSAGE));
+        double balance = input - total;
+        JOptionPane.showMessageDialog(null, "Balance: RM " + Product.convertTwoDecimalPoint(balance));
