@@ -1,7 +1,8 @@
 public static void deleteCustomer(int id) 
     {
         for (int j = customers.size() - 1; j >= 0; j--) {
-            
+            if (customers.get(j).getCustomerID() == id) {
+                customers.remove(customers.get(j));
                 break;
             }
         }
