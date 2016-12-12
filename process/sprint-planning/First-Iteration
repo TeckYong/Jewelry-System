@@ -1,8 +1,7 @@
 Chan Chun Weng - 1) As a staff, I want to filter customers based on their id, name, phone number and home address.
-                 2) As a staff, I want to view the list of customers that use the system in order to know their contact details.
-                 3) As a staff, I can perform product buying operations with selected customer so that the customer can choose what 
+                 2) As a staff, I can perform product buying operations with selected customer so that the customer can choose what 
                     item they wish to buy.
-                 4) As a staff, I want to be able to view the total price of items at checkout so that I can inform the customer of 
+                 3) As a staff, I want to be able to view the total price of items at checkout so that I can inform the customer of 
                     total price of all purchases.
                     
 Tan Jun Lem    - 1) As a staff, I will be able to add a new customer into the system so that their details are reusable for their next 
