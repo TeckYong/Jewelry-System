@@ -1,0 +1,33 @@
+1) [As a staff, I will be able to add a new customer into the system so that their details are reusable for their next purchases.]
+   Tan Jun Lem spents almost 2 days to finish this user stories. He used 1 day to done the form to allowed staff to add new customer and 
+   used another day to fixed the form bug/error.
+   
+2) [As a staff, I will be able to update existing customer details in case certain customers have changed some of their details such as contact details.]
+   Tan Jun Lem spents spent 1 day using 7 working hours to finish this user stories which is create the features to let customer update 
+   customer details.
+   
+3) [As a staff, I want to delete a customer from customer list so that customers who have not made purchases over a long time can be removed.]
+   Tan Jun Lem spent 2 days to finish this user stories because of unfamiliar with this feature code. So at the end, he is spending 1 day
+   to do some online research on how to delete data from database. Then he spent 1 day to created this feature.
+   
+4) [As a staff, I want to be able to enter customer payment amount so that I can give the customer back his balance if any for his purchases.]
+   Yashua Daniel spent 2 days to complete this user stories that related to payment module. He seperate few sub-systems to coding. So he
+   can code in a very efficient way.
+   
+5) [As a staff, I can perform product buying operations with selected customer so that I can buy the customers items.]
+   Yashua Daniel also spent 2 days to fnish this user stories. He spent 1 day to complete buying operations and then spent another day to
+   debug and fix error.
+   
+6) [As a staff, I can perform product buying operations with selected customer so that the customer can choose what item they wish to buy.]
+   Yashua Daniel used 1 day to finish this user stories which is exchanging feature for the payment and sales module.
+   
+7) [As a staff, I want to filter customers based on their id, name, phone number and home address.]
+   Chan Chun Weng spent 1 day to finish the UI of this user stories. After that, he spent another 1 day to create object to perform testing
+   purposes. So he total spent 2 days to finish this user stories.
+
+8) [As a staff, I can perform product buying operations with selected customer so that the customer can choose what item they wish to buy.]
+   Chan Chun Weng spent 1 day to finish this user stories which is create selling operations between from staff to customers.
+   
+9) [As a staff, I want to be able to view the total price of items at checkout so that I can inform the customer of total price of all purchases.]
+   Chan Chun Weng spent 2 day to complete above user stories. First of the day, he used to create the functions to store buy from customer
+   and customer pay. After that, he merge his code with his friend which is Yashua Danial.
