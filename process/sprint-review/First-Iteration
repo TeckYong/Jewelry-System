@@ -1,0 +1,31 @@
+After finish first iteration, we have conduct a sprint review to review the feautures, give feedback about the emerging product and discuss
+new ideas to add to the product backlog.
+
+From Yashua Daniel(scrum team) prespective, he said that currently the payment system allows for customers to do exchanges with the store 
+using jewellery also now the system is able to calculate total costs of a customers purchase by getting the total price of items purchased,
+subtracting the exchange costs. Furthermore it also allows the store to now be able to buy jewelry items from their customers as well. 
+About the emerging product, Daniel feel for the payment module to be completed now mostly what is needed is set costs of each item being 
+sold and have the prices be based of current market prices. Lastly, Daniel suggested that our system should have a comprehensive report 
+feature to generate reports based of important information such as total profit in a month and even getting amount of items sold over a 
+period of time.
+
+From Tan Jun Lem(scrum team) prespective, he said that currently the add new customer features allows the staff to add the new customer 
+into the system. The design of the form is only request the important details of the customer which can reduce the workload of the staff.
+Moreover, the update and delete customer is a function that allow the staff to manage the customer account that suit the company business
+rule in order to manage the customer data effectively and efficiently. About the add new,update and delete customer function are completed 
+and suit for the company business rule. The reduce workload is one of the aim of our systme design. Lastly, Jun Lem purposed that our 
+system should has the feautes that allows the staff to add, update and delete the products. The staff should quickly update the product 
+details which is follow the market such as availability of products and product prices.
+
+From Chan Chun Weng(scrum team) prespective, he said that currently the customer list page allows the staffs to filter based on the 
+customer id, name, phone number and home address criteria using only single text box provided. Then, staffs can do selling operation to
+customer and also able to view the total price for purchasing items at the checkout page and to inform the customer. Current the features
+that stated just now are completed, but there's still one feature to be add in is market price list to let the staff know about the current
+market price of each products. Lastly, Chun Weng suggested that our system should have a window to list out all different market price and 
+also allows the staff to alter it accordingly.
+
+From Teh Teck Yong(scrum master) prespective, I feel that features that commit by my team at the first iteration are work well because I 
+had tested it personally. But the whole system are actually not done yet, still have a lot of features/functions need to add in. After I 
+note down those features/functions my team suggested and purposed, I will add it into product backlog with others features/functions that 
+need to add in that in my mind.
+
