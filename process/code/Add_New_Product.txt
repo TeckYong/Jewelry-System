@@ -153,7 +153,76 @@ public class AddProduct extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>                                         
+    }// </editor-fold>                        
+
+    private void cboTypeActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        if (cboType.getSelectedItem().equals("Bullion")) {
+            jLabel9.setVisible(false);
+            txtPurity.setVisible(false);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel8.setVisible(true);
+            txtCountry.setVisible(true);
+            txtYear.setVisible(true);
+            txtValue.setVisible(true);
+            
+            cboMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Gold", "Silver"}));
+            this.pack();
+        } else {
+            jLabel9.setVisible(true);
+            txtPurity.setVisible(true);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel8.setVisible(false);
+            txtCountry.setVisible(false);
+            txtYear.setVisible(false);
+            txtValue.setVisible(false);
+            cboMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Gold", "Silver", "Diamond", "Jade", "Platinum"}));
+            this.pack();
+        }
+    }                                       
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        String pName = txtProdName.getText();
+        String type = cboType.getSelectedItem().toString();
+        double weight = ((txtWeight.getText().length() == 0) ? 0.0 : Double.parseDouble(txtWeight.getText()));
+        String material = cboMaterial.getSelectedItem().toString();
+        String country = txtCountry.getText();
+        int year = ((txtYear.getText().length() == 0) ? 0 : Integer.parseInt(txtYear.getText()));
+        double value = ((txtValue.getText().length() == 0) ? 0.0 : Double.parseDouble(txtValue.getText()));
+        String purity = txtPurity.getText();
+        Product p = null;
+
+        if (type.equalsIgnoreCase("bullion") && material.equalsIgnoreCase("gold")) {
+            p = new BullionGold("", pName, type, weight, material, country, year, value);
+        }
+
+        if (type.equalsIgnoreCase("bullion") && material.equalsIgnoreCase("silver")) {
+            p = new BullionSilver("", pName, type, weight, material, country, year, value);
+        }
+
+        if (type.equalsIgnoreCase("jewelry") && material.equalsIgnoreCase("gold")) {
+            p = new JewelryGold("", pName, type, weight, material, purity);
+        }
+
+        if (type.equalsIgnoreCase("jewelry") && material.equalsIgnoreCase("silver")) {
+            p = new JewelrySilver("", pName, type, weight, material, purity);
+        }
+
+        if (type.equalsIgnoreCase("jewelry") && material.equalsIgnoreCase("diamond")) {
+            p = new JewelryDiamond("", pName, type, weight, material, purity);
+        }
+
+        if (type.equalsIgnoreCase("jewelry") && material.equalsIgnoreCase("jade")) {
+            p = new JewelryJade("", pName, type, weight, material, purity);
+        }
+
+        if (type.equalsIgnoreCase("jewelry") && material.equalsIgnoreCase("platinum")) {
+            p = new JewelryPlatinum("", pName, type, weight, material, purity);
+        }
+        Store.addProduct(p);
+        this.dispose();
+    }                                      
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
