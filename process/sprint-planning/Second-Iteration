@@ -1,0 +1,23 @@
+Chan Chun Weng - 1) As a staff, I want to view current market price list of the products so that if a customer asks me I can tell them 
+                    what the current market price is for some items.
+                 2) As a staff, I can modify the current market price from the price list so that when the market price changes i can 
+                    alter them accordingly.
+                    
+Tan Jun Lem    - 1) As a staff, I am able to add new products so that when new items are being sold at the store I can add them into 
+                    the system.
+                 2) As a staff, I am allowed to update existing product details so that if certain items details are changed i can edit 
+                    it accordingly.
+                 3) As a staff, I can delete a product from product lists so that if items are no longer being sold by the store won't be 
+                    displayed anymore.
+                 4) As a staff, I am able to view a list of all available products sold by our store so that I can also recommend certain 
+                    items to customers based on what items they are looking for.
+                 5) As a staff, I want to be able to filter products in the list based on product type and any specific details so that i 
+                    can find items faster.
+                                  
+Yashua Daniel  - 1) As a staff, I want to generate report with total sales report so that we will be able to calculate all sales made in 
+                    a month.
+                 2) As a staff, I want to generate report with monthly sales of products so that can see what items are being sold and at 
+                    what rate.
+                 3) As a staff, I want to generate report with the list of products so that can know what products are in inventory.
+                 4) As a staff, I want to generate report with the list of customers so that we can know how many new customers and old 
+                    customers there are over a period of time.
