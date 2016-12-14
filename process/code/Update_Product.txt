@@ -195,4 +195,101 @@ public class UpdateProduct extends javax.swing.JDialog {
             txtValue.setVisible(false);
             cboMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Gold", "Silver", "Diamond", "Jade", "Platinum"}));
         }
+    }                                       
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        String pName = txtProdName.getText();
+        String type = cboType.getSelectedItem().toString();
+        double weight = ((txtWeight.getText().length() == 0) ? 0.0 : Double.parseDouble(txtWeight.getText()));
+        String material = cboMaterial.getSelectedItem().toString();
+        String country = txtCountry.getText();
+        int year = ((txtYear.getText().length() == 0) ? 0 : Integer.parseInt(txtYear.getText()));
+        double value = ((txtValue.getText().length() == 0) ? 0.0 : Double.parseDouble(txtValue.getText()));
+        String purity = txtPurity.getText();
+        Product p = null;
+
+        if (type.equalsIgnoreCase("bullion") && material.equalsIgnoreCase("gold")) {
+            p = new BullionGold(Integer.parseInt(lblProdID.getText()), pName, type, weight, material, country, year, value);
+        }
+
+        if (type.equalsIgnoreCase("bullion") && material.equalsIgnoreCase("silver")) {
+            p = new BullionSilver(Integer.parseInt(lblProdID.getText()), pName, type, weight, material, country, year, value);
+        }
+
+        if (type.equalsIgnoreCase("jewelry") && material.equalsIgnoreCase("gold")) {
+            p = new JewelryGold(Integer.parseInt(lblProdID.getText()), pName, type, weight, material, purity);
+        }
+
+        if (type.equalsIgnoreCase("jewelry") && material.equalsIgnoreCase("silver")) {
+            p = new JewelrySilver(Integer.parseInt(lblProdID.getText()), pName, type, weight, material, purity);
+        }
+
+        if (type.equalsIgnoreCase("jewelry") && material.equalsIgnoreCase("diamond")) {
+            p = new JewelryDiamond(Integer.parseInt(lblProdID.getText()), pName, type, weight, material, purity);
+        }
+
+        if (type.equalsIgnoreCase("jewelry") && material.equalsIgnoreCase("jade")) {
+            p = new JewelryJade(Integer.parseInt(lblProdID.getText()), pName, type, weight, material, purity);
+        }
+
+        if (type.equalsIgnoreCase("jewelry") && material.equalsIgnoreCase("platinum")) {
+            p = new JewelryPlatinum(Integer.parseInt(lblProdID.getText()), pName, type, weight, material, purity);
+        }
+        Store.updateProduct(p);
+        this.dispose();
+    }                                         
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(UpdateProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(UpdateProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(UpdateProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(UpdateProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new UpdateProduct().setVisible(true);
+            }
+        });
     }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton btnUpdate;
+    public javax.swing.JComboBox<String> cboMaterial;
+    public javax.swing.JComboBox<String> cboType;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    public javax.swing.JLabel lblProdID;
+    public javax.swing.JTextField txtCountry;
+    public javax.swing.JTextField txtProdName;
+    public javax.swing.JTextField txtPurity;
+    public javax.swing.JTextField txtValue;
+    public javax.swing.JTextField txtWeight;
+    public javax.swing.JTextField txtYear;
+    // End of variables declaration                   
+}
