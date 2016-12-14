@@ -20,10 +20,10 @@
                     if (UJS.customers.get(i).products.size() > 0) {
                         for (int j = 0; j < UJS.customers.get(i).products.size(); j++) {
                             NumberItemSold++;
-                            revenue += UJS.customers.get(i).products.get(j).calculateSellPrice() * UJS.customers.get(i).products.get(j).getWeight();
+                            revenue += UJS.customers.get(i).products.get(j).calculateSellPrice() *                                    UJS.customers.get(i).products.get(j).getWeight();
+                            }
                         }
                     }
+                    table.addCell("" + NumberItemSold);
+                    table.addCell(Product.convertTwoDecimalPoint(revenue));
                 }
-                table.addCell("" + NumberItemSold);
-                table.addCell(Product.convertTwoDecimalPoint(revenue));
-            }
