@@ -1,0 +1,8 @@
+public static void removeProduct(int id) {
+        for (int j = products.size() - 1; j >= 0; j--) {
+            if (products.get(j).getProductID() == id) {
+                products.remove(products.get(j));
+                break;
+            }
+        }
+    }
