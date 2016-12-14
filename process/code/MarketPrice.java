@@ -3,11 +3,15 @@ public class MarketPrice extends javax.swing.JDialog {
     public MarketPrice() {
         initComponents();
         setLocationRelativeTo(this);
-        
+        txtGold.setText(Product.convertTwoDecimalPoint(UJS.goldPricePerGram));
+        txtSilver.setText(Product.convertTwoDecimalPoint(UJS.silverPricePerGram));
+        txtDiamond.setText(Product.convertTwoDecimalPoint(UJS.diamondPricePerGram));
+        txtJade.setText(Product.convertTwoDecimalPoint(UJS.jadePricePerGram));
+        txtPlatinum.setText(Product.convertTwoDecimalPoint(UJS.platinumPricePerGram));
     }
  
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -131,15 +135,15 @@ public class MarketPrice extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {                                        
 
-    }//GEN-LAST:event_btnEditActionPerformed
+    }                                       
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {                                          
 
-    }//GEN-LAST:event_btnUpdateActionPerformed
+    }                                         
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -173,7 +177,7 @@ public class MarketPrice extends javax.swing.JDialog {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
@@ -186,5 +190,5 @@ public class MarketPrice extends javax.swing.JDialog {
     private javax.swing.JTextField txtJade;
     private javax.swing.JTextField txtPlatinum;
     private javax.swing.JTextField txtSilver;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
