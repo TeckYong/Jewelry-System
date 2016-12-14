@@ -11,8 +11,8 @@ if (radSalesReport.isSelected()) {
                 cell.setBackgroundColor(new BaseColor(140, 221, 8));
                 table.addCell(cell);
 
-                table.addCell("Cusomer Name");
-                table.addCell("Cusomer Phone No");
+                table.addCell("Customer Name");
+                table.addCell("Customer Phone No");
                 table.addCell("No of products");
                 table.addCell("Total Spent (RM)");
 
