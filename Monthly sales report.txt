@@ -1,0 +1,20 @@
+if (radMonthlySalesRevenue.isSelected()) {
+                table = new PdfPTable(2);
+                table.setWidthPercentage(100);
+                table.setSpacingBefore(0f);
+                table.setSpacingAfter(0f);
+
+                PdfPCell cell = new PdfPCell(new Phrase("Monthly Sales Revenue"));
+                cell.setColspan(2);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell.setPadding(5.0f);
+                cell.setBackgroundColor(new BaseColor(140, 221, 8));
+                table.addCell(cell);
+
+                table.addCell("Number of Product Sold");
+                table.addCell("Revenue (RM)");
+
+                int NumberItemSold = 0;
+                double revenue = 0.0;
+
+}
