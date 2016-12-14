@@ -1,0 +1,36 @@
+if (radSalesReport.isSelected()) {
+                table = new PdfPTable(4);
+                table.setWidthPercentage(100);
+                table.setSpacingBefore(0f);
+                table.setSpacingAfter(0f);
+
+                PdfPCell cell = new PdfPCell(new Phrase("Sales Report"));
+                cell.setColspan(4);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell.setPadding(5.0f);
+                cell.setBackgroundColor(new BaseColor(140, 221, 8));
+                table.addCell(cell);
+
+                table.addCell("Customer Name");
+                table.addCell("Customer Phone No");
+                table.addCell("No of products");
+                table.addCell("Total Spent (RM)");
+
+                int NumberItemSold = 0;
+                double revenue = 0.0;
+
+                for (int i = 0; i < UJS.customers.size(); i++) {
+                    if (UJS.customers.get(i).products.size() > 0) {
+                        table.addCell("" + UJS.customers.get(i).getCustName());
+                        table.addCell("" + UJS.customers.get(i).getCustPhoneNo());
+                        for (int j = 0; j < UJS.customers.get(i).products.size(); j++) {
+                            NumberItemSold++;
+                            revenue += UJS.customers.get(i).products.get(j).calculateSellPrice() * UJS.customers.get(i).products.get(j).getWeight();
+                        }
+                        table.addCell("" + NumberItemSold);
+                        table.addCell(Product.convertTwoDecimalPoint(revenue));
+                        NumberItemSold = 0;
+                        revenue = 0;
+                    }
+                }
+            }
