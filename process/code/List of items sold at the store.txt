@@ -1,0 +1,27 @@
+if (radListOfProducts.isSelected()) {
+                table = new PdfPTable(5);
+                table.setWidthPercentage(100);
+                table.setSpacingBefore(0f);
+                table.setSpacingAfter(0f);
+
+                PdfPCell cell = new PdfPCell(new Phrase("List of products"));
+                cell.setColspan(5);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell.setPadding(5.0f);
+                cell.setBackgroundColor(new BaseColor(140, 221, 8));
+                table.addCell(cell);
+
+                table.addCell("Product ID");
+                table.addCell("Product Name");
+                table.addCell("Product Type");
+                table.addCell("Weight (g)");
+                table.addCell("Price(RM)");
+
+                for (int i = 0; i < UJS.customers.size(); i++) {
+                    table.addCell("" + Store.products.get(i).getProductID());
+                    table.addCell(Store.products.get(i).getProductName());
+                    table.addCell(Store.products.get(i).getProductType());
+                    table.addCell("" + Store.products.get(i).getWeight());
+                    table.addCell(Product.convertTwoDecimalPoint(Store.products.get(i).calculateSellPrice()));
+                }
+            }
