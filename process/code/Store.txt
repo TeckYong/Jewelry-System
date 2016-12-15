@@ -1,4 +1,15 @@
- public static ArrayList<Product> loadProduct() {
+public static Product findProduct(int id) {
+        Product found = null;
+        for (int j = products.size() - 1; j >= 0; j--) {
+            if (products.get(j).getProductID() == id) {
+                found = products.get(j);
+                break;
+            }
+        }
+        return found;
+    }
+
+    public static ArrayList<Product> loadProduct() {
         ArrayList<Product> p = new ArrayList<>();
         p.add(new BullionGold("", "Gold Bullion", "Bullion", 100, "Gold", "US", 1999, 999));
         p.add(new BullionSilver("", "Silver Bullion", "Bullion", 1000, "Silver", "UK", 1988, 916));
