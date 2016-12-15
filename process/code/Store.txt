@@ -1,0 +1,11 @@
+ public static ArrayList<Product> loadProduct() {
+        ArrayList<Product> p = new ArrayList<>();
+        p.add(new BullionGold("", "Gold Bullion", "Bullion", 100, "Gold", "US", 1999, 999));
+        p.add(new BullionSilver("", "Silver Bullion", "Bullion", 1000, "Silver", "UK", 1988, 916));
+        p.add(new JewelryGold("", "Gold Jewelry", "Jewelry", 50, "Gold", "999"));
+        p.add(new JewelrySilver("", "Silver Jewelry", "Jewelry", 50, "Silver", "999"));
+        p.add(new JewelryDiamond("", "Diamond Jewelry", "Jewelry", 50, "Diamond", "999"));
+        p.add(new JewelryJade("", "Jade Jewelry", "Jewelry", 50, "Jade", "999"));
+        p.add(new JewelryPlatinum("", "Platinum Jewelry", "Jewelry", 50, "Platinum", "999"));
+        return p;
+    }
