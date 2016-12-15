@@ -139,10 +139,32 @@ public class MarketPrice extends javax.swing.JDialog {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {                                        
 
+        if (btnEdit.getText().equalsIgnoreCase("Cancel")) {
+            btnEdit.setText("Edit");
+            btnUpdate.setVisible(false);
+            txtGold.setEnabled(false);
+            txtSilver.setEnabled(false);
+            txtDiamond.setEnabled(false);
+            txtJade.setEnabled(false);
+            txtPlatinum.setEnabled(false);
+        } else {
+            btnEdit.setText("Cancel");
+            btnUpdate.setVisible(true);
+            txtGold.setEnabled(true);
+            txtSilver.setEnabled(true);
+            txtDiamond.setEnabled(true);
+            txtJade.setEnabled(true);
+            txtPlatinum.setEnabled(true);
+        }
     }                                       
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {                                          
-
+        UJS.goldPricePerGram = Double.parseDouble(txtGold.getText());
+        UJS.silverPricePerGram = Double.parseDouble(txtSilver.getText());
+        UJS.diamondPricePerGram = Double.parseDouble(txtDiamond.getText());
+        UJS.jadePricePerGram = Double.parseDouble(txtJade.getText());
+        UJS.platinumPricePerGram = Double.parseDouble(txtPlatinum.getText());
+        this.dispose();
     }                                         
 
     public static void main(String args[]) {
