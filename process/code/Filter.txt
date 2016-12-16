@@ -13,3 +13,43 @@ txtSearch.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {//ignore this
             }
         });
+
+
+
+protected void updateFilter(String text) {
+        TableRowSorter<TableModel> sorter = (TableRowSorter<TableModel>) tblProduct.getRowSorter();
+        RowFilter<TableModel, Object> firstFiler = null;
+        RowFilter<TableModel, Object> secondFilter = null;
+        RowFilter<TableModel, Object> thirdFiler = null;
+        RowFilter<TableModel, Object> fourthFiler = null;
+        RowFilter<TableModel, Object> fifthFiler = null;
+        RowFilter<TableModel, Object> sixthFiler = null;
+        RowFilter<TableModel, Object> seventhFiler = null;
+        RowFilter<TableModel, Object> eightFiler = null;
+        List<RowFilter<TableModel, Object>> filters = new ArrayList<RowFilter<TableModel, Object>>();
+        RowFilter<TableModel, Object> compoundRowFilter = null;
+        try {
+            firstFiler = RowFilter.regexFilter(text, 0);
+            secondFilter = RowFilter.regexFilter(text, 1);
+            thirdFiler = RowFilter.regexFilter(text, 2);
+            fourthFiler = RowFilter.regexFilter(text, 3);
+            fifthFiler = RowFilter.regexFilter(text, 4);
+            sixthFiler = RowFilter.regexFilter(text, 5);
+            seventhFiler = RowFilter.regexFilter(text, 6);
+            eightFiler = RowFilter.regexFilter(text, 7);
+
+            filters.add(firstFiler);
+            filters.add(secondFilter);
+            filters.add(thirdFiler);
+            filters.add(fourthFiler);
+            filters.add(fifthFiler);
+            filters.add(sixthFiler);
+            filters.add(seventhFiler);
+            filters.add(eightFiler);
+
+            compoundRowFilter = RowFilter.orFilter(filters);
+        } catch (java.util.regex.PatternSyntaxException e) {
+            return;
+        }
+        sorter.setRowFilter(compoundRowFilter);
+    }
