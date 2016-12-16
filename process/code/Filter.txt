@@ -1,0 +1,15 @@
+txtSearch.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateFilter(txtSearch.getText());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateFilter(txtSearch.getText());
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {//ignore this
+            }
+        });
