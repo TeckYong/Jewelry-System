@@ -4,24 +4,24 @@ if (radListOfCustomers.isSelected()) {
                 table.setSpacingBefore(0f);
                 table.setSpacingAfter(0f);
 
-                PdfPCell cell = new PdfPCell(new Phrase("List of customers"));
-                cell.setColspan(5);
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setPadding(5.0f);
-                cell.setBackgroundColor(new BaseColor(140, 221, 8));
-                table.addCell(cell);
+PdfPCell cell = new PdfPCell(new Phrase("List of customers"));
+                  cell.setColspan(5);
+                  cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                  cell.setPadding(5.0f);
+                  cell.setBackgroundColor(new BaseColor(140, 221, 8));
+                  table.addCell(cell);
 
-                table.addCell("Customer ID");
-                table.addCell("Customer Name");
-                table.addCell("Customer IC");
-                table.addCell("Customer Phone No");
-                table.addCell("Address");
+                  table.addCell("Customer ID");
+                  table.addCell("Customer Name");
+                  table.addCell("Customer IC");
+                  table.addCell("Customer Phone No");
+                  table.addCell("Address");
 
-                for (int i = 0; i < UJS.customers.size(); i++) {
-                    table.addCell("" + UJS.customers.get(i).getCustomerID());
-                    table.addCell(UJS.customers.get(i).getCustName());
-                    table.addCell(UJS.customers.get(i).getCustIC());
-                    table.addCell(UJS.customers.get(i).getCustPhoneNo());
-                    table.addCell(UJS.customers.get(i).getCustAddress());
-                }
-            }
+for (int i = 0; i < UJS.customers.size(); i++) {
+     table.addCell("" + UJS.customers.get(i).getCustomerID());
+     table.addCell(UJS.customers.get(i).getCustName());
+     table.addCell(UJS.customers.get(i).getCustIC());
+     table.addCell(UJS.customers.get(i).getCustPhoneNo());
+     table.addCell(UJS.customers.get(i).getCustAddress());
+   }
+}
