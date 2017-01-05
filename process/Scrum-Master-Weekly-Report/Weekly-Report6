@@ -1,0 +1,40 @@
+19 December 2016
+Merge all the pull request (feature branch) into master branch and create automated unit test for all function, method, object and class.
+
+20 Demceber 2016
+Done acceptance test for 4 user stories which is :
+1)As a staff, I will be able to add a new customer into the system so that their details are reusable for their next purchases.
+2)As a staff, I want to be able to enter customer payment amount so that I can give the customer back his balance if any for his purchases.
+3)As a staff, I want to filter customers based on their id, name, phone number and home address.
+4)As a staff, I will be able to update existing customer details in case certain customers have changed some of their details such as contact details.
+
+21 December 2016
+Done acceptance test for 4 user stories which is :
+1)As a staff, I can perform product buying operations with selected customer so that I can buy the customers items.
+2)As a staff, I want to delete a customer from customer list so that customers who have not made purchases over a long time can be removed.
+3)As a staff, I can perform product buying operations with selected customer so that the customer can choose what item they wish to buy.
+4)As a staff, I want to be able to view the total price of items at checkouts that can inform the customer of total price of all purchases.
+
+22 December 2016
+Done acceptance test for 4 user stories which is :
+1)As a staff, I am able to add new products so that when new items are being sold at the store I can add them into the system
+2)As a staff, I want to generate report with total sales of products so that we will be able to calculate all sales made in a month.
+3)As a staff, I want to generate report with products so that can see what items are being sold and at where rate.
+4)As a staff, I am allowed to update existing product details so that if certain items details are changed I can edit is accordingly.
+
+23 December 2016
+Done acceptance test for 4 user stories which is :
+1)As a staff, I can delete a product form product lists so that if items are no longer being sold by the store won’t be displayed any more.
+2)As a staff, I want to view current market price list of the products so that if a customer asks me I can tell them what the current market price.
+3)As a staff, I want to generate report with the list of products so that can know what products are inventory.
+4)As a staff, I am able to view a list of all available products sold by our store so that I can also recommend certain items to customers based on what items they are looking for. 
+
+24 December 2016
+Done acceptance test for 4 user stories which is :
+1)As a staff, I am able to perform product exchange operations with selected customer so that the customer can exchange certain items for other items.
+2)As a staff, I can modify the current market price from the price list so that when the market price changes I can alter them accordingly.
+3)As a staff, I want to generate report with the list of customers so that we can know how many new customers and old customers there are over a period of time.
+4)As a staff, I want to be able to filter products in the list based on product type and any specific details so that I can find item faster.
+
+25 December 2016
+Allocate task for report that wanted to submit and work together at CITC.
